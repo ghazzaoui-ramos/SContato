@@ -1,0 +1,54 @@
+﻿@using SContatos.Enuns
+@model UsuarioModel
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Editar Usuario </h1>
+
+</div>
+
+<form asp-controller="Usuario" asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label for="Name">Nome: </label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Edite o nome do Usuario">
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="email">E-mail: </label>
+        <input type="email" asp-for="Email" class="form-control" placeholder="Edite o e-mail do Usuario">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="Login">Login: </label>
+        <input type="text" asp-for="Login" class="form-control" placeholder="Edite o Login do Usuario">
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="Perfil">Perfil: </label>
+        <select asp-for="perfil" class="form-control">
+            <option value="">Selecione</option>
+            <option value="@PerfilEnum.Admin">Adiministrador</option>
+            <option value="@PerfilEnum.Padrao">Padrão</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.perfil)
+    </div>
+    <br />
+
+
+    <button type="submit" class="btn btn-primary w-100 mb-3 rounded">Editar</button>
+    <a class="btn btn-secondary w-100 rounded" asp-controller="Usuario" asp-action="index" role="button">Voltar</a>
+
+</form>
+
